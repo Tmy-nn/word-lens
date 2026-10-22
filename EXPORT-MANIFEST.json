@@ -188,8 +188,8 @@
     },
     {
       "path": "docs/release-checks.md",
-      "bytes": 3460,
-      "sha256": "c37ee2379066ae39ed81f70e0dfcd72857fd0f1bc0a7cc507dcc3bbc919900da"
+      "bytes": 4556,
+      "sha256": "5b0cd24265674611332470ddf3471203220709ba76b675a4f04a75f20797f779"
     },
     {
       "path": ".gitattributes",

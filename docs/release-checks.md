@@ -32,3 +32,11 @@ The simulated camera and mocked speech API are not evidence of real-camera accur
 ## Publication
 
 The English interface was deployed to https://word-lens.ai-knowledge-board.workers.dev/ with Cloudflare Worker version `af6331f4-988f-4b05-a195-0f411d51c778`. The public source repository is https://github.com/Tmy-nn/word-lens. Application source rights remain reserved; public visibility is not an open-source license grant.
+
+## Live verification
+
+The deployed English build passed the real-model browser end-to-end checks on 2026-10-22: both sample detectors, language changes, explicit selection, camera-denial recovery, model-error recovery, cancellation, and protected source paths returning 404. Viewports 375/390/768/1440 px had no horizontal overflow and visible interactive elements were at least 44 px tall. No page exceptions or cross-origin application requests were recorded in the tested flow. Camera frames and speech output were simulated; physical camera and audible voice checks remain pending.
+
+The production HTML returned HTTP 200 and lang=en, with the GitHub source link. CSP, camera-only permissions policy and nosniff headers were verified in the browser. Independent phone-width/desktop screenshot review found no blocking display issue.
+
+GitHub Actions passed for source commit e456bbbe091e9b27f874cd6e4ac965ec5ebf250d: https://github.com/Tmy-nn/word-lens/actions/runs/39849209017 . It installs dependencies, retrieves and verifies the pinned assets, runs unit tests and builds the app on Linux.
