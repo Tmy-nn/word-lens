@@ -1,0 +1,28 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { Stabilizer, rankVector, voicesFor, recognitionFeedback } from './logic.mjs';
+import { VOCAB, LANGUAGES } from './vocabulary.mjs';
+import { ObjectTracks, containRect } from './selection.mjs';
+import { DETECTION_VOCAB } from './detector-vocabulary.mjs';
+import { OPENIMAGES_VOCAB, OPENIMAGES_BY_LABEL } from './openimages-vocabulary.mjs';
+import { readFileSync } from 'node:fs';
+test('expanded translations preserve all 601 trained class IDs and seven languages',()=>{
+ const labels=JSON.parse(readFileSync(new URL('./public/expanded/labels.json',import.meta.url),'utf8'));
+ assert.equal(OPENIMAGES_VOCAB.length,601);assert.equal(OPENIMAGES_BY_LABEL.size,601);
+ for(const label of labels){const item=OPENIMAGES_BY_LABEL.get(label.label);assert.ok(item,label.label);assert.equal(item.id,`oi-${label.id}`);for(const lang of LANGUAGES)assert.ok(item.words[lang.id]?.trim(),`${label.label}:${lang.id}`);}
+ const house=OPENIMAGES_BY_LABEL.get('House');assert.equal(house.words.es,'casa');assert.equal(house.words.pt,'casa');assert.equal(OPENIMAGES_BY_LABEL.get('Human nose').ja,'鼻');
+});
+const cup=(x)=>({label:'cup',score:.8,box:{x,y:.2,width:.2,height:.3}});
+test('selection is explicit and survives detector order changes with two cups',()=>{const t=new ObjectTracks();t.update([cup(.1),cup(.6)],0);assert.equal(t.selected,null);t.select(t.tracks[0].id);const id=t.selected.id;t.update([cup(.61),cup(.11)],600);assert.equal(t.selected.id,id);assert.equal(t.selected.box.x,.11);});
+test('lost target keeps its label but never silently switches to another cup',()=>{const t=new ObjectTracks();t.update([cup(.1)],0);t.select(t.tracks[0].id);const id=t.selected.id;for(const now of [500,1000,1500])t.update([cup(.65)],now);assert.equal(t.selected.id,id);assert.equal(t.selected.label,'cup');assert.ok(!t.visible().some(x=>x.id===id));t.clear();assert.equal(t.selected,null);});
+test('slow devices preserve identity across 1.5 second inference frames',()=>{const t=new ObjectTracks();t.update([cup(.1)],0);t.select(t.tracks[0].id);const id=t.selected.id;t.update([cup(.12)],1500);assert.equal(t.selected.id,id);assert.equal(t.visible()[0].id,id);t.reset();assert.equal(t.selected,null);assert.equal(t.visible().length,0);});
+test('box placement respects portrait and landscape letterboxing',()=>{assert.deepEqual(containRect(640,480,320,240),{x:0,y:0,width:320,height:240});assert.deepEqual(containRect(480,640,320,240),{x:70,y:0,width:180,height:240});});
+test('all 80 detector labels have seven translations with cup chair book mappings',()=>{assert.equal(DETECTION_VOCAB.length,80);assert.equal(new Set(DETECTION_VOCAB.map(x=>x.label)).size,80);for(const item of DETECTION_VOCAB)for(const lang of LANGUAGES)assert.ok(item.words[lang.id]);assert.equal(DETECTION_VOCAB.find(x=>x.label==='cup').words.es,'taza');assert.equal(DETECTION_VOCAB.find(x=>x.label==='chair').words.pt,'cadeira');assert.equal(DETECTION_VOCAB.find(x=>x.label==='book').words.es,'libro');});
+test('recognition needs two stable frames and expires stale word',()=>{const s=new Stabilizer();const ranking=[{id:'house',score:.32},{id:'tree',score:.25}];assert.equal(s.update(ranking,1000),null);assert.equal(s.update(ranking,1650),'house');assert.equal(s.update([{id:'_blur',score:.6}],4000),null);});
+test('ambiguous and weak matches are rejected',()=>{for(const ranking of [[{id:'house',score:.19}],[{id:'house',score:.3},{id:'tree',score:.29}]]){const s=new Stabilizer();s.update(ranking,2000);assert.equal(s.update(ranking,3000),null);}});
+test('ambiguous real house frame gives visible tentative feedback without passing stable gate',()=>{const ranking=[{id:'house',score:.392735},{id:'street',score:.392210},{id:'apartment-building',score:.375196}];const s=new Stabilizer();let result;for(const now of [1000,1650,2300])result=recognitionFeedback(ranking,s.update(ranking,now));assert.equal(s.current,null);assert.equal(result.id,'house');assert.equal(result.mode,'tentative');assert.ok(result.alternatives.includes('street'));});
+test('background or weak frames never expose an old accepted word',()=>{for(const ranking of [[{id:'background-0',score:.46},{id:'house',score:.30}],[{id:'house',score:.19}]])assert.equal(recognitionFeedback(ranking,'house').id,null);const result=recognitionFeedback([{id:'cat',score:.42},{id:'house',score:.40}],'house');assert.equal(result.id,'cat');assert.equal(result.mode,'tentative');});
+test('two clear frames promote a tentative candidate to stable without hiding the first response',()=>{const ranking=[{id:'house',score:.413048},{id:'apartment-building',score:.358888}];const s=new Stabilizer();assert.equal(recognitionFeedback(ranking,s.update(ranking,1000)).mode,'tentative');assert.equal(recognitionFeedback(ranking,s.update(ranking,1650)).mode,'stable');});
+test('cosine matching uses normalized query',()=>{assert.equal(rankVector([3,0],[{id:'yes',vector:[1,0]},{id:'no',vector:[0,1]}])[0].id,'yes');});
+test('voice selection never falls back to different language',()=>{const voices=[{name:'English',lang:'en-US'},{name:'Spanish',lang:'es-ES'},{name:'Spanish natural',lang:'es-MX'}];assert.equal(voicesFor(voices,'pt-BR').length,0);assert.equal(voicesFor(voices,'es-MX')[0].lang,'es-MX');});
+test('vocabulary translations and identities are complete',()=>{assert.ok(VOCAB.length>=100);assert.equal(new Set(VOCAB.map(x=>x.id)).size,VOCAB.length);for(const item of VOCAB){for(const lang of LANGUAGES)assert.ok(item.words[lang.id]?.trim(),`${item.id}: ${lang.id}`);assert.ok(item.prompts.length>=1);}const house=VOCAB.find(x=>x.id==='house');assert.equal(house.words.en,'house');assert.equal(house.words.es,'casa');assert.equal(house.words.pt,'casa');});

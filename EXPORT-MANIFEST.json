@@ -1,0 +1,200 @@
+{
+  "format": 1,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3508,
+      "sha256": "613fa8a0bfae37267bbd45f525c7c5433dcb036f2aaa5fc2f6561c561901b9ec"
+    },
+    {
+      "path": "docs/architecture.md",
+      "bytes": 1747,
+      "sha256": "a3018c43208c02b4171251870a63241ad260b3754ded11bccc79793513bab873"
+    },
+    {
+      "path": "docs/reproducibility.md",
+      "bytes": 4707,
+      "sha256": "6ebc322dc1dbf130e07e49478d1d1273ff76e4261ad1cb3213c9ffa8792175a7"
+    },
+    {
+      "path": "docs/credits.md",
+      "bytes": 1537,
+      "sha256": "e4ede498f77280d6ce8992cf07f648a1c16db5ed742d9600dd7f5567de61650c"
+    },
+    {
+      "path": "app.mjs",
+      "bytes": 16892,
+      "sha256": "76a35910e2032f39f792f884ac6d04bc83f6ffd0f2babec54be0aead5b2fc56f"
+    },
+    {
+      "path": "index.html",
+      "bytes": 6651,
+      "sha256": "66bfac9aa00e7c3a08cf7abdc7036161cd802c7955dd999f4cca3eed446315a7"
+    },
+    {
+      "path": "style.css",
+      "bytes": 9260,
+      "sha256": "c678e65850950bd2153b38404d80f7b51681fe8871b5213efa65ae695b0e6d2f"
+    },
+    {
+      "path": "logic.mjs",
+      "bytes": 1873,
+      "sha256": "17eaa2e1ff5e1916b38959d1b69d2004174e0728a565a279e53411df19cab4ae"
+    },
+    {
+      "path": "selection.mjs",
+      "bytes": 1720,
+      "sha256": "f7fbaa1198c9557b444f58a041b5cf537d65f8aed8bc1d684627bb89d3a28b20"
+    },
+    {
+      "path": "vocabulary.mjs",
+      "bytes": 19681,
+      "sha256": "df847efee7b32b372cc71662ada981ec4eeefa7018ac75985fca03e35d759f4e"
+    },
+    {
+      "path": "detector-vocabulary.mjs",
+      "bytes": 8028,
+      "sha256": "abd5f5e10133425dad48782e41eef95785314d2414167182311cb8546ae8268f"
+    },
+    {
+      "path": "openimages-vocabulary.mjs",
+      "bytes": 43919,
+      "sha256": "e9fc945dcaf46f432b52258670b6c9598eb0bb4a9f6fd51ca21a64c8a11837bd"
+    },
+    {
+      "path": "tests.mjs",
+      "bytes": 5746,
+      "sha256": "3f2d881d26f36008bf2d4c890e2cbfc3d82e3c592631f6e687309237b271853c"
+    },
+    {
+      "path": "e2e-event.mjs",
+      "bytes": 9414,
+      "sha256": "2b0da1c20e61208bc9e5c9a153d25cbe486566fe133f544e07085dc439ac1531"
+    },
+    {
+      "path": "vite.config.mjs",
+      "bytes": 1981,
+      "sha256": "17f4d53471a73f10b52dc94c4c9b8e7669c9022f1d895975a4bdaed4bf5efc01"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 126021,
+      "sha256": "6cfcaebcd16b52e39c46470fc1f4e32625802bcb9f37ada642866667da31bbfe"
+    },
+    {
+      "path": "public/icon.svg",
+      "bytes": 261,
+      "sha256": "ca9322025e452a9067bca6f20c40070d449aef24c69933f0e48fbecfd8483f77"
+    },
+    {
+      "path": "public/og.png",
+      "bytes": 18345,
+      "sha256": "b1ea1ec9e6bdd8fe791e70548e81b15b942460ca64dda02c1dac3fbe1ece9058"
+    },
+    {
+      "path": "public/_headers",
+      "bytes": 662,
+      "sha256": "b78020320a749e77211716e4529f15113da233b4a94325823c1e57b7d835e982"
+    },
+    {
+      "path": "public/THIRD_PARTY.txt",
+      "bytes": 3755,
+      "sha256": "5aad0678dc7aa59a79af8b08b3ef89f049f1fe597936fc05f9b04d394d62745a"
+    },
+    {
+      "path": "public/detector-worker.js",
+      "bytes": 4052,
+      "sha256": "01a8b9372e078a4338bf57f50d39082db9140e0e6194857d40f818fe2d6a2c6a"
+    },
+    {
+      "path": "public/expanded-worker.js",
+      "bytes": 6193,
+      "sha256": "2431e8fb334d66c163e27fa2a477281d6a69d0d1d1d462bffdfa5bc44ca8eccb"
+    },
+    {
+      "path": "public/samples/chair.jpg",
+      "bytes": 196768,
+      "sha256": "b7fd907f4ca6e303f02ee1a7df71cc031087422250525b72cbf33b0f6a91473f"
+    },
+    {
+      "path": "public/samples/ATTRIBUTION.txt",
+      "bytes": 346,
+      "sha256": "e405c4cd885b12469fcd58a7796b723c0745c3e9ff1d8d7d2750e5da54468ac1"
+    },
+    {
+      "path": "public/detector/manifest.json",
+      "bytes": 1243,
+      "sha256": "0e853ef2bc929a9a9553c7f15036f5280c6d75915b7020f4f30fb3312001dea1"
+    },
+    {
+      "path": "public/detector/LICENSE.txt",
+      "bytes": 12331,
+      "sha256": "8707eef0533987efc5b155d64761eeb6e20793f50b9bd1a68dad1cf4719d0ed8"
+    },
+    {
+      "path": "public/expanded/manifest.json",
+      "bytes": 2230,
+      "sha256": "b84e5a26a2bd5b75eede958b41c20707dd3ba7199323390d81bf2bd2fc2be0f7"
+    },
+    {
+      "path": "public/expanded/labels.json",
+      "bytes": 46010,
+      "sha256": "c91acee89efe2e19ffec193b537d9f0999cdc811ddf7365d759a9138a5c5d8d3"
+    },
+    {
+      "path": "public/expanded/THIRD_PARTY.txt",
+      "bytes": 1158,
+      "sha256": "3676a4d46a074a08529ba39a1ffdd1d68caaf620ac18d74fab1857ccca6d0804"
+    },
+    {
+      "path": "public/expanded/LICENSE-MODEL.txt",
+      "bytes": 11512,
+      "sha256": "5b17814bf0de8cf65069bc6d7cc38cff19fcaa864d243423ad3ef3db01b52385"
+    },
+    {
+      "path": "public/expanded/LICENSE-RUNTIME.txt",
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "path": "public/expanded/ThirdPartyNotices-runtime.txt",
+      "bytes": 326866,
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc"
+    },
+    {
+      "path": "scripts/prepare-assets.mjs",
+      "bytes": 2609,
+      "sha256": "385a594a84cd53ddc9c140f3b8952fda1d60dc6e5a41414364503fe75b2d60f7"
+    },
+    {
+      "path": "package.json",
+      "bytes": 651,
+      "sha256": "40b5883bf231c5ed13cafa1e7bbe91bb2f4ff2562f752004eaceb791f19fd3f6"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 184,
+      "sha256": "a3c5e15096492e8af4d99c5de520c4332e9e5836627773196af91823f08b851e"
+    },
+    {
+      "path": "wrangler.jsonc",
+      "bytes": 224,
+      "sha256": "7eee5feb8fbf6c50f404c296d67064e25cae7dd9e10c3edc6e9a10dfdd5b702c"
+    },
+    {
+      "path": ".github/workflows/check.yml",
+      "bytes": 429,
+      "sha256": "a030de26c249062412ebd3a2d840c2dc4892ff9e396d3f6220fe4f424bba95c4"
+    },
+    {
+      "path": "docs/release-checks.md",
+      "bytes": 3460,
+      "sha256": "c37ee2379066ae39ed81f70e0dfcd72857fd0f1bc0a7cc507dcc3bbc919900da"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 174,
+      "sha256": "0b15d2188dc2719f24bc15ce9baf832edcd09585eef5c22e1e400f88faa0f1c3"
+    }
+  ]
+}

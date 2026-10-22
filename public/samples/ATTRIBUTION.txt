@@ -1,0 +1,7 @@
+Sample photograph: Chair.JPG
+Author: Antonio Borrillo
+Source: https://commons.wikimedia.org/wiki/File:Chair.JPG
+License: CC0 1.0 Universal
+License text: https://creativecommons.org/publicdomain/zero/1.0/
+The bundled image is a resized copy. It is passed to the real object detector.
+No preset detection boxes or generated model results are used.

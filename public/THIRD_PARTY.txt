@@ -1,0 +1,71 @@
+Word Lens — model attribution
+
+EXPANDED OBJECT DETECTOR (601 categories, default)
+
+Google SSD MobileNet V2 Open Images V4, Apache-2.0.
+Converted to ONNX with int8 weights, float32 activations; no retraining.
+ONNX Runtime Web 1.22.0, MIT.
+Full provenance, modifications and licenses: expanded/THIRD_PARTY.txt,
+expanded/LICENSE-MODEL.txt, expanded/LICENSE-RUNTIME.txt,
+expanded/ThirdPartyNotices-runtime.txt and expanded/manifest.json.
+Images stay on the device. Translations are authored separately.
+
+STANDARD OBJECT DETECTOR (80 categories, selectable)
+
+MediaPipe Tasks Vision 1.0.1 — Google LLC / MediaPipe Authors
+Runtime package: https://www.npmjs.com/package/@mediapipe/tasks-vision/v/1.0.1
+Source: https://github.com/google-ai-edge/mediapipe
+License: Apache-2.0; full license included at detector/LICENSE.txt.
+The JavaScript bundle and SIMD / non-SIMD WebAssembly runtimes are copied
+without modification from the pinned official npm package.
+
+EfficientDet-Lite2 (int8), model version 1 — Google / TensorFlow
+Model: https://storage.googleapis.com/mediapipe-models/object_detector/efficientdet_lite2/int8/1/efficientdet_lite2.tflite
+Guide: https://ai.google.dev/edge/mediapipe/solutions/vision/object_detector
+Model card: https://www.kaggle.com/models/tensorflow/efficientdet/tfLite/lite2-detection-metadata/1
+License: Apache-2.0 (detector/LICENSE.txt).
+The model is unmodified. It was trained on COCO and supports 80 object
+categories, not arbitrary scenes, landmarks, or all vocabulary words.
+SHA-256 and exact file sizes are recorded in detector/manifest.json.
+
+App preprocessing preserves image aspect ratio using a square letterbox,
+then maps detected boxes back to the original image coordinates.
+Translations are authored separately. No camera image is sent to Google.
+
+LEGACY DEVELOPMENT ASSETS (excluded from the current public build)
+
+TinyCLIP: CLIP Distillation via Affinity Mimicking and Weight Inheritance
+Authors: Kan Wu, Houwen Peng, Zhenghong Zhou, Bin Xiao, Mengchen Liu, Lu Yuan,
+Hong Xuan, Michael Valenzuela, Xi (Stephen) Chen, Xinggang Wang, Hongyang Chao,
+and Han Hu. ICCV 2023.
+Original model: https://huggingface.co/wkcn/TinyCLIP-ViT-8M-16-Text-3M-YFCC15M
+ONNX conversion: https://huggingface.co/onnx-community/TinyCLIP-ViT-8M-16-Text-3M-YFCC15M-ONNX
+Source: https://github.com/wkcn/TinyCLIP
+
+Modifications for this app: extracted the image encoder from the quantized
+ONNX graph without retraining; precomputed normalized English prompt embeddings
+for the app vocabulary. Word translations were authored separately.
+
+MIT License
+Copyright (c) Microsoft Corporation.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+The app also uses ONNX Runtime Web, distributed under the MIT License:
+https://github.com/microsoft/onnxruntime/blob/main/LICENSE

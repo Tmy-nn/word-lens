@@ -1,0 +1,52 @@
+{
+  "source": "https://storage.googleapis.com/download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_oid_v4_2018_12_12.tar.gz",
+  "labelSource": "https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/oid_v4_label_map.pbtxt",
+  "license": "Apache-2.0",
+  "classes": 601,
+  "input": [
+    "Preprocessor/sub:0"
+  ],
+  "outputs": [
+    "Postprocessor/Decode/transpose_1:0",
+    "Postprocessor/convert_scores:0"
+  ],
+  "preprocessing": "RGB NHWC 300x300, pixel / 127.5 - 1",
+  "postprocessing": "Exclude background column 0; sigmoid already applied; class-wise IoU NMS 0.6; threshold 0.3 (original pipeline config)",
+  "files": {
+    "ort.wasm.min.js": {
+      "bytes": 48327,
+      "sha256": "65e09376df69107e881b5c34d2d37aed333a366b6d941073ec518168e269b87d"
+    },
+    "ort-wasm-simd-threaded.mjs": {
+      "bytes": 20856,
+      "sha256": "30dd851d9c00622940500f71ddd2ff8820c5cb65270816080175b958705385a8"
+    },
+    "ort-wasm-simd-threaded.wasm": {
+      "bytes": 11210254,
+      "sha256": "71aef04959c5c1b6de461b6538e2058e306610034a85aad2742d0c7fd4533fe4"
+    },
+    "openimages-int8-weights.onnx": {
+      "bytes": 14850853,
+      "sha256": "f9705e45c0b402217c74b1c03bb93007e780c9350962fe3caf132ad89a15613b"
+    },
+    "labels.json": {
+      "bytes": 46010,
+      "sha256": "c91acee89efe2e19ffec193b537d9f0999cdc811ddf7365d759a9138a5c5d8d3"
+    },
+    "LICENSE-MODEL.txt": {
+      "bytes": 11512,
+      "sha256": "5b17814bf0de8cf65069bc6d7cc38cff19fcaa864d243423ad3ef3db01b52385"
+    },
+    "LICENSE-RUNTIME.txt": {
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    "ThirdPartyNotices-runtime.txt": {
+      "bytes": 326866,
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc"
+    }
+  },
+  "runtime": "onnxruntime-web@1.22.0",
+  "sourceArchiveSha256": "8dd82cc52625eb9b43c6ed8050868fe1e78f878c6f028519fc731b3c7e9035f7",
+  "modifications": "Frozen graph converted with TensorFlow 2.15.1 / tf2onnx 1.16.1 / ONNX opset13; preprocessing and classwise NMS moved to worker; 72 weight tensors stored as int8 per output channel with DequantizeLinear; activations remain float32. No retraining."
+}

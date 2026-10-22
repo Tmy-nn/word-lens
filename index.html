@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Word Lens — See it. Say it. Learn it.</title>
+<meta name="description" content="Discover words in seven languages with on-device object detection. Try a sample photo or your camera. Images stay in your browser.">
+<meta name="theme-color" content="#F7F8FB"><meta property="og:title" content="Word Lens — See it. Say it. Learn it."><meta property="og:description" content="Explore words with on-device AI. Try a photo or point your camera. Built by ACLab."><meta property="og:type" content="website"><meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://word-lens.ai-knowledge-board.workers.dev/og.png"><meta property="og:url" content="https://word-lens.ai-knowledge-board.workers.dev/">
+<meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://word-lens.ai-knowledge-board.workers.dev/"><link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="stylesheet" href="/style.css"></head>
+<body>
+<svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><symbol id="camera-icon" viewBox="0 0 24 24"><path d="M8 5 10 3h4l2 2h4v15H4V5z"/><circle cx="12" cy="12" r="4"/></symbol><symbol id="sound-icon" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5zM15 8a6 6 0 0 1 0 8M18 4a11 11 0 0 1 0 16"/></symbol><symbol id="lens-icon" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/><circle cx="12" cy="12" r="4"/></symbol></svg>
+<header><a class="brand" href="/" aria-label="Word Lens home"><svg aria-hidden="true"><use href="#lens-icon"/></svg><span>Word Lens</span></a><a class="maker" href="https://aclabtech.com/en/">Built by ACLab <span aria-hidden="true">↗</span></a></header>
+<main>
+  <section class="intro"><div><p class="eyebrow">ON-DEVICE AI · NO ACCOUNT NEEDED</p><h1>See it. Say it.<br>Learn it.</h1></div><p>Turn everyday objects into words.<br>Choose a language. Tap an object. Hear it spoken.</p></section>
+  <section class="workspace" aria-label="Object detection and vocabulary">
+    <div class="camera-panel">
+      <div class="camera-heading"><span id="camera-status">Ready when you are</span><span id="timing" class="metric" aria-label="Inference time"></span></div>
+      <div class="viewfinder" id="viewfinder">
+        <video id="video" playsinline muted aria-label="Live camera feed"></video>
+        <img id="sample-image" src="/samples/chair.jpg" alt="A bentwood chair against a plain wall; sample photo by Antonio Borrillo" hidden>
+        <div id="object-overlay" aria-label="Detected objects"></div>
+        <div class="camera-empty" id="camera-empty"><svg aria-hidden="true"><use href="#camera-icon"/></svg><p>A new word,<br>right in front of you.</p><small>Try a photo first, or open your camera.</small></div>
+      </div>
+      <div id="live-result" class="live-result" hidden><div><p id="live-caption" class="eyebrow">Choose an object</p><strong id="live-word">Tap an object</strong></div><button id="live-speak" class="sound-button" disabled aria-label="Hear the selected word"><svg aria-hidden="true"><use href="#sound-icon"/></svg></button></div>
+      <div id="object-choices" class="object-choices" aria-label="Select a detected object by name" hidden></div>
+      <div class="camera-controls"><button id="sample" class="primary">Try a sample photo</button><button id="start"><svg aria-hidden="true"><use href="#camera-icon"/></svg><span>Open camera</span></button><button id="stop" hidden>Stop</button><button id="flip" aria-label="Switch front and rear camera" hidden>Flip camera</button><button id="clear-selection" hidden>Clear selection</button></div>
+      <p id="status" role="status">The first scan downloads a model. No camera permission is needed for the sample.</p>
+      <progress id="progress" max="100" value="0" hidden aria-label="Loading the detection model"></progress>
+      <p class="privacy-note">Detection runs in your browser. Images are not uploaded. <a href="/samples/ATTRIBUTION.txt">Sample credit</a></p>
+    </div>
+    <div class="word-panel">
+      <div class="language-control"><label for="language">Learn a word in</label><select id="language" aria-label="Word language"></select></div>
+      <div class="word-result" id="word-result" aria-live="polite" aria-atomic="true"><p class="eyebrow" id="result-caption">Choose an object</p><div class="word-row"><h2 id="word">—</h2><button id="speak" class="sound-button" disabled aria-label="Hear pronunciation"><svg aria-hidden="true"><use href="#sound-icon"/></svg></button></div><p id="japanese">Your next word starts with a photo.</p><p id="result-note" class="muted">Tap a detection box or an object name.</p><p id="voice-availability" class="muted" hidden></p></div>
+      <details class="speech-settings"><summary>Voice &amp; detection settings</summary><label for="voice">Pronunciation voice</label><select id="voice" aria-label="Pronunciation voice"></select><p id="voice-note" class="muted"></p><p id="speech-status" role="status"></p><div class="language-control"><label for="detector">Object detector</label><select id="detector" aria-describedby="detector-note"><option value="expanded">Expanded · 601 categories</option><option value="standard">Everyday · 80 categories</option></select><p id="detector-note" class="muted"></p></div></details>
+      <details><summary>How it works &amp; limitations</summary><p>Try the sample photo or open your camera, then tap a detection box or an object name. Change the word language and press the speaker button to hear it. The sample uses the real detector, not preset boxes.</p><p id="coverage"></p><p>A selected word stays visible when its object leaves the frame. Tracking may confuse objects of the same type. This detects object categories; it does not translate text or identify specific products.</p><p>Pronunciation uses your browser's speech voices. Availability and sound vary by device. Some voices use an online speech service. Object words are provided by a curated vocabulary, not generated translations.</p></details>
+    </div>
+  </section>
+  <footer><span>Word Lens · An ACLab experiment</span><a href="https://github.com/Tmy-nn/word-lens">Source on GitHub</a><a href="/THIRD_PARTY.txt">Models &amp; licenses</a></footer>
+  <noscript><p>Enable JavaScript to run on-device detection and pronunciation. Word Lens uses your camera only after you press Open camera. Images are processed in your browser.</p></noscript>
+</main><script type="module" src="/app.mjs"></script></body></html>

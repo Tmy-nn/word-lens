@@ -1,0 +1,24 @@
+{
+  "name": "word-lens",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 8793",
+    "build": "vite build --emptyOutDir false",
+    "test": "node --test tests.mjs",
+    "test:e2e": "node e2e-event.mjs",
+    "prepare:assets": "node scripts/prepare-assets.mjs",
+    "verify:assets": "node scripts/prepare-assets.mjs --verify-only"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "1.0.1",
+    "onnxruntime-web": "1.22.0"
+  },
+  "devDependencies": {
+    "@huggingface/transformers": "3.8.1",
+    "@playwright/test": "1.55.0",
+    "vite": "7.1.0",
+    "wrangler": "4.132.0"
+  }
+}

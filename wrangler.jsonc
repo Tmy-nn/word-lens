@@ -1,0 +1,10 @@
+{
+  "name": "word-lens-demo",
+  "compatibility_date": "2026-09-26",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./dist-detector",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

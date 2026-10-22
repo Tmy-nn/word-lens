@@ -1,0 +1,10 @@
+node_modules/
+dist-detector/
+.wrangler/
+.env*
+.model-cache/
+public/detector/*.tflite
+public/detector/vision_bundle.js
+public/detector/wasm/
+public/expanded/*.onnx
+public/expanded/ort*

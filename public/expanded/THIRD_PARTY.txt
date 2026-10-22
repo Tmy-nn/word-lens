@@ -1,0 +1,18 @@
+Word Lens expanded object detector
+
+SSD MobileNet V2 OpenImages V4 (2018-12-12), Google / TensorFlow Authors.
+601 object categories from the official numeric label map; score column 0 is background.
+Source: https://storage.googleapis.com/download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_oid_v4_2018_12_12.tar.gz
+Labels: https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/oid_v4_label_map.pbtxt
+License: Apache-2.0, full text in LICENSE-MODEL.txt.
+
+Modifications: Frozen graph converted with TensorFlow 2.15.1 / tf2onnx 1.16.1 / ONNX opset13; preprocessing and classwise NMS moved to worker; 72 weight tensors stored as int8 per output channel with DequantizeLinear; activations remain float32. No retraining.
+
+ONNX Runtime Web 1.22.0, Microsoft Corporation.
+Source: https://github.com/microsoft/onnxruntime/tree/v1.22.0
+License: MIT, full text in LICENSE-RUNTIME.txt.
+Additional notices are included in ThirdPartyNotices-runtime.txt.
+The distributed runtime files are unmodified.
+
+Exact source and distributed-file hashes are in manifest.json.
+Camera images are processed locally; no image is uploaded.
